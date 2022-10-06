@@ -1,17 +1,19 @@
 \section*{Introduction}
-\paragraph{1. Use Euler's formula to prove that:}
+\textbf{1. Use Euler's formula to prove that:}
 
-\begin{equation}
+\begin{equation*}
 	\sin(x) \cos(x) = \frac{1}{2} \sin(2x)
-\end{equation}
+\end{equation*}
 
-\paragraph{Given that:}
+\textbf{Given that:}
+
 \begin{align}
 	e^{ix} &= \cos(x) + i \sin(x) \label{eq:1}\\
 	e^{-ix} &= \cos(-x) + i \sin(-x) = \cos(x) - i \sin(x) \label{eq:2}
 \end{align}
 
-\paragraph{Follows:}
+\textbf{Follows:}
+
 \begin{align*}
 	\cos(x) &= \frac{e^{ix} + e^{-ix}}{2} & & \text{From adding \ref{eq:1} and \ref{eq:2}}\\
 	 \sin(x) &= \frac{e^{ix} - e^{-ix}}{2i} & & \text{From substracting \ref{eq:1} and \ref{eq:2}} 
@@ -24,18 +26,18 @@
 	&= \frac{1}{2} \sin(2x) & & \text{Substituting \ref{eq:4}}
 \end{align*}
 
+\textbf{2. Show that:}
 
-\paragraph{2. Show that:}
-\begin{equation}
+\begin{equation*}
 	\int_0^{T_0} \cos(k \omega_0 t) \cos(n \omega_0 t) dt =
 	\begin{cases}
 		0,& k \neq n\\
 		\frac{T_0}{2},& k = n \neq 0\\
 		T_0,& k = n = 0
 	\end{cases}
-\end{equation}
+\end{equation*}
 
-\paragraph{Given that:}
+\textbf{Given that:}
 
 \begin{equation}
 	\cos(x) \cos(y) = \frac{1}{2} \left[ \cos(x-y) + cos(x+y) \right]
@@ -49,7 +51,7 @@
 	\end{cases}
 \end{equation}
 
-\paragraph{Follows:}
+\textbf{Follows:}
 
 \[
 	\int_0^{T_0} \cos(k \omega_0 t) \cos(n \omega_0 t) dt 
