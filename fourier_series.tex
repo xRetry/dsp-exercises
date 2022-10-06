@@ -84,6 +84,7 @@ Case $A=0,\ B>0$:
 
 \textbf{a) Derive an algebraic expression for the coefficients $A_k$ and $B_k$ of the Fourier series.}
 
+
 \begin{align*}
 	B_0 &= 0\\
     A_0 &= \frac{1}{T} \int 1 - \frac{2t}{T} dt
@@ -104,12 +105,24 @@ Case $A=0,\ B>0$:
 	&= \frac{1}{k^2\pi^2} [1 - \cos(k\pi) ]
 \end{align*}
 
+\newpage
+
 \textbf{b) Plot $A_k$ over $k$ for $0 \leq k < 10$}
+\\
 
 \lstinputlisting[language=Python, firstline=0, lastline=13]{code/ex_5.py}
 
-
 \begin{figure}[H]
 	\includegraphics[width=8cm]{img/ex_5_b.png}
+	\centering
+\end{figure}
+
+\textbf{c) Plot the Fourier series from [-T0;T0] for kmax = 1 and kmax = 9.}
+\\
+
+\lstinputlisting[language=Python, firstline=15]{code/ex_5.py}
+
+\begin{figure}[H]
+	\includegraphics[width=8cm]{img/ex_5_c.png}
 	\centering
 \end{figure}
