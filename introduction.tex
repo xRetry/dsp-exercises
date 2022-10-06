@@ -1,0 +1,83 @@
+\section*{Introduction}
+\paragraph{1. Use Euler's formula to prove that:}
+
+\begin{equation}
+	\sin(x) \cos(x) = \frac{1}{2} \sin(2x)
+\end{equation}
+
+\paragraph{Given that:}
+\begin{align}
+	e^{ix} &= \cos(x) + i \sin(x) \label{eq:1}\\
+	e^{-ix} &= \cos(-x) + i \sin(-x) = \cos(x) - i \sin(x) \label{eq:2}
+\end{align}
+
+\paragraph{Follows:}
+\begin{align*}
+	\cos(x) &= \frac{e^{ix} + e^{-ix}}{2} & & \text{From adding \ref{eq:1} and \ref{eq:2}}\\
+	 \sin(x) &= \frac{e^{ix} - e^{-ix}}{2i} & & \text{From substracting \ref{eq:1} and \ref{eq:2}} 
+\end{align*}
+
+\begin{align*}
+	\sin(x) \cos(x) &= \frac{e^{ix} + e^{-ix}}{2} \cdot \frac{e^{ix} - e^{-ix}}{2i} & & \text{Substituting \ref{eq:3} and \ref{eq:4}}\\
+	&= \frac{e^{i2x} - e^{i0} + e^{i0} - e^{-i2x}}{4i} & & \text{Multiplying fractions}\\
+	&= \frac{1}{2} \frac{e^{i2x} - e^{-i2x}}{2i} & & \text{Combining exponentials}\\
+	&= \frac{1}{2} \sin(2x) & & \text{Substituting \ref{eq:4}}
+\end{align*}
+
+
+\paragraph{2. Show that:}
+\begin{equation}
+	\int_0^{T_0} \cos(k \omega_0 t) \cos(n \omega_0 t) dt =
+	\begin{cases}
+		0,& k \neq n\\
+		\frac{T_0}{2},& k = n \neq 0\\
+		T_0,& k = n = 0
+	\end{cases}
+\end{equation}
+
+\paragraph{Given that:}
+
+\begin{equation}
+	\cos(x) \cos(y) = \frac{1}{2} \left[ \cos(x-y) + cos(x+y) \right]
+\end{equation}
+
+\begin{equation}
+	\int_0^{T_0} \cos(k \omega_0 t) dt =
+	\begin{cases}
+		T_0,& k=0\\
+		0,& k \neq 0
+	\end{cases}
+\end{equation}
+
+\paragraph{Follows:}
+
+\[
+	\int_0^{T_0} \cos(k \omega_0 t) \cos(n \omega_0 t) dt 
+	= \frac{1}{2} \int_0^{T_0} \left[ \cos\left((k-n)\omega_0 t\right) + \cos\left((k+n)\omega_0 t\right)\right] dt
+\]
+
+
+Case $k \neq n$:
+
+\[
+	\frac{1}{2} \int_0^{T_0} \left[ \cos\left(a \omega_0 t\right) + \cos\left(b \omega_0 t\right)\right] dt
+	= \frac{1}{2} (0 + 0)
+	= 0
+\]
+
+Case $k = n \neq 0$:
+
+\[
+	\frac{1}{2} \int_0^{T_0} \left[ \cos\left(0\right) + \cos\left(2k\omega_0 t\right)\right] dt
+	= \frac{1}{2} T_0 + 0
+	= \frac{T_0}{2}
+\]
+
+Case $k = n = 0$:
+
+\[
+	\frac{1}{2} \int_0^{T_0} \left[ \cos\left(0\right) + \cos\left(0\right)\right] dt
+	= \frac{2}{2} T_0
+	= T_0
+\]
+
