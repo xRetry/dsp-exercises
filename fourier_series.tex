@@ -1,5 +1,5 @@
 \section*{Fourier Series}
-\textbf{3. Show that $B_k = \frac{2}{T_0} \oint f(t) \sin(k \omega_0 t) dt$ is consistent with the Fourier series.}
+\textbf{\large 3. Show that $B_k = \frac{2}{T_0} \oint f(t) \sin(k \omega_0 t) dt$ is consistent with the Fourier series.}
 \\
 
 \textbf{Given that:}
@@ -38,7 +38,7 @@ Case $k > 0$:
 	B_k = \frac{2}{T_0} \sum_{n=0}^\infty \{A_n \underbrace{\oint \cos(n \omega_0 t) \sin(k \omega_0 t) dt}_{=0} + B_n \underbrace{\oint \sin(n \omega_0 t) \sin(k \omega_0 t) dt}_{=\frac{T_0}{2}} \} = B_k
 \]
 
-\textbf{4. Show that $f(t) = \sum_{k=0}^\infty a_k \cos(k \omega_0 t - \phi_k)$ is equivalent to the Fourier series.}
+\textbf{\large 4. Show that $f(t) = \sum_{k=0}^\infty a_k \cos(k \omega_0 t - \phi_k)$ is equivalent to the Fourier series.}
 \\
 
 \textbf{Given that:}
@@ -79,7 +79,7 @@ Case $A=0,\ B>0$:
 \end{align*}
 \\
 
-\textbf{5. Consider the triangular function:}
+\textbf{\large 5. Consider the triangular function:}
 
 \[
 	f(t) = 
@@ -100,57 +100,72 @@ Case $A=0,\ B>0$:
     = \frac{1}{2} - \frac{1}{4} = \frac{1}{4}\\
 	a &\equiv k\omega & & \text{Shortening notation}\\
 	B_k &= 0\\
-	A_k &= \frac{5}{T} \int_0^{T/2} \left( 1-\frac{2t}{T} \right) \cos(at) dt & & \text{Using symmetry and odd property}\\
-	&= \frac{4}{T} \int_0^{T/2} \cos(at)-\frac{2t}{T} \cos(at) dt & & \text{Multiplying cosine}\\
-	&= \frac{4}{T} \left[ \left[ a^{-1} \sin(at) \right]_0^{T/2} - \int_0^{T/2} \frac{2t}{T} \cos(at) dt \right] & & \text{Computing first integral}\\
-	&= \frac{4}{T} \left[ \left[ a^{-1} \sin(at) - \frac{2t}{aT} \sin(at) \right]_0^{T/2} + \int_0^{T/2} \frac{2}{aT} \sin(at) dt \right] & & \text{Applying product rule}\\
-	&= \frac{4}{T} \left[ a^{-1} \sin(at) - \frac{2t}{aT} \sin(at) - \frac{2}{a^2T} \cos(at)  \right]_0^{T/2} \\
+	A_k &= \frac{5}{T} \int_0^{T/2} \left( 1-\frac{2t}{T} \right) \cos(at) dt & & \text{Used symmetry and odd property}\\
+	&= \frac{4}{T} \int_0^{T/2} \cos(at)-\frac{2t}{T} \cos(at) dt & & \text{Multiplied cosine}\\
+	&= \frac{4}{T} \left[ \left[ a^{-1} \sin(at) \right]_0^{T/2} - \int_0^{T/2} \frac{2t}{T} \cos(at) dt \right] & & \text{Computed first integral}\\
+	&= \frac{4}{T} \left[ \left[ a^{-1} \sin(at) - \frac{2t}{aT} \sin(at) \right]_0^{T/2} + \int_0^{T/2} \frac{2}{aT} \sin(at) dt \right] & & \text{Applied product rule}\\
+	&= \frac{4}{T} \left[ a^{-1} \sin(at) - \frac{2t}{aT} \sin(at) - \frac{2}{a^2T} \cos(at)  \right]_0^{T/2} & & \text{Computed second integral} \\
 	&= a^{-1} \sin(aT/2) - 0
 		- a^{-1} \sin(aT/2) + 0
-		- \frac{2}{a^2T} \cos(aT/2) + \frac{2}{a^2T} & & \text{Inserting boundaries}\\
-	&= \frac{4}{k^2\omega^2T^2} [1 - \cos(k\pi) ] & & \text{Replacing} a\\
-	&= \frac{1}{k^2\pi^2} [1 - \cos(k\pi) ]
+		- \frac{2}{a^2T} \cos(aT/2) + \frac{2}{a^2T} & & \text{Inserted boundaries}\\
+	&= \frac{4}{k^2\omega^2T^2} [1 - \cos(k\pi) ] & & \text{Replaced}\ a\\
+	&= \frac{1}{k^2\pi^2} [1 - \cos(k\pi) ] & & \text{Replaced}\ T
 \end{align*}
 
 \newpage
 
-\textbf{b) Plot $A_k$ over $k$ for $0 \leq k < 10$}
-\\
-
-\lstinputlisting[language=Python, firstline=0, lastline=13]{code/ex_5.py}
-
-\begin{figure}[H]
-	\includegraphics[width=8cm]{img/ex_5_b.png}
-	\centering
-\end{figure}
+\textbf{b) Plot $A_k$ over $k$ for $0 \leq k < 10$}\\
 
 \textbf{c) Plot the Fourier series from [-T0;T0] for kmax = 1 and kmax = 9.}
 \\
 
-\lstinputlisting[language=Python, firstline=15]{code/ex_5.py}
+\lstinputlisting[language=Python, firstline=0, lastline=13,
+	caption=Python code for 5b
+]{code/ex_5.py}
+
+\lstinputlisting[language=Python, firstline=15,
+	caption=Python code for 5c
+]{code/ex_5.py}
 
 \begin{figure}[H]
-	\includegraphics[width=8cm]{img/ex_5_c.png}
 	\centering
+	\begin{minipage}[c]{7.5cm}
+		\includegraphics[width=7.5cm]{img/ex_5_b.png}
+		\captionsetup{width=6cm}
+		\caption{Plot for 5b. The value of $A_k$ for different values of $k$}
+	\end{minipage}
+	\begin{minipage}[c]{7.5cm}
+		\includegraphics[width=7.5cm]{img/ex_5_c.png}
+		\captionsetup{width=6cm}
+		\caption{Plot for 5c. The Fourier series with two different values for $k_{max}$}
+	\end{minipage}
 \end{figure}
 
-\textbf{6. Consider the Fourier series of the rectangular function (see course notes).}
+\newpage
 
-\textbf{a)}
+\textbf{\large 6. Consider the Fourier series of the rectangular function (see course notes).}
+\lstinputlisting[language=Python, firstline=0, lastline=28,
+	caption=Python code for 6a
+]{code/ex_6.py}
 
-\lstinputlisting[language=Python, firstline=0, lastline=28]{code/ex_6.py}
+\lstinputlisting[language=Python, firstline=30,
+	caption=Python code for 6c
+]{code/ex_6.py}
 
 \begin{figure}[H]
-	\includegraphics[width=8cm]{img/ex_6_a.png}
 	\centering
+	\begin{minipage}[c]{7.5cm}
+		\includegraphics[width=7.5cm]{img/ex_6_a.png}
+		\captionsetup{width=6cm}
+		\caption{Plot for 6a. The overshoot height for different values of $k_{max}$}
+	\end{minipage}
+	\begin{minipage}[c]{7.5cm}
+		\includegraphics[width=7.5cm]{img/ex_6_b.png}
+		\captionsetup{width=6cm}
+		\caption{Plot for 6c. The overshoot width for different values of $k_{max}$}
+	\end{minipage}
 \end{figure}
 
-\lstinputlisting[language=Python, firstline=30]{code/ex_6.py}
-
-\begin{figure}[H]
-	\includegraphics[width=8cm]{img/ex_6_b.png}
-	\centering
-\end{figure}
 
 
 

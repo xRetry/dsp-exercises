@@ -1,5 +1,5 @@
 \section*{Introduction}
-\textbf{1. Use Euler's formula to prove that:}
+\textbf{\large 1. Use Euler's formula to prove that:}
 
 \begin{equation*}
 	\sin(x) \cos(x) = \frac{1}{2} \sin(2x)
@@ -14,19 +14,19 @@
 
 \textbf{Follows:}
 
-\begin{align*}
-	\cos(x) &= \frac{e^{ix} + e^{-ix}}{2} & & \text{From adding \ref{eq:1} and \ref{eq:2}}\\
-	 \sin(x) &= \frac{e^{ix} - e^{-ix}}{2i} & & \text{From substracting \ref{eq:1} and \ref{eq:2}} 
-\end{align*}
+\begin{align}
+	\cos(x) &= \frac{e^{ix} + e^{-ix}}{2} & & \text{Added \eqref{eq:1} and \eqref{eq:2}} \label{eq:3}\\
+	\sin(x) &= \frac{e^{ix} - e^{-ix}}{2i} & & \text{Subtracted \eqref{eq:1} from \eqref{eq:2}} \label{eq:4}
+\end{align}
 
 \begin{align*}
-	\sin(x) \cos(x) &= \frac{e^{ix} + e^{-ix}}{2} \cdot \frac{e^{ix} - e^{-ix}}{2i} & & \text{Substituting \ref{eq:3} and \ref{eq:4}}\\
-	&= \frac{e^{i2x} - e^{i0} + e^{i0} - e^{-i2x}}{4i} & & \text{Multiplying fractions}\\
-	&= \frac{1}{2} \frac{e^{i2x} - e^{-i2x}}{2i} & & \text{Combining exponentials}\\
-	&= \frac{1}{2} \sin(2x) & & \text{Substituting \ref{eq:4}}
+	\sin(x) \cos(x) &= \frac{e^{ix} + e^{-ix}}{2} \cdot \frac{e^{ix} - e^{-ix}}{2i} & & \text{Substituting \eqref{eq:3} and \eqref{eq:4}}\\
+	&= \frac{e^{i2x} - e^{i0} + e^{i0} - e^{-i2x}}{4i} & & \text{Multiplied fractions}\\
+	&= \frac{1}{2} \frac{e^{i2x} - e^{-i2x}}{2i} & & \text{Combined exponentials}\\
+	&= \frac{1}{2} \sin(2x) & & \text{Substituted \eqref{eq:4}}
 \end{align*}
 
-\textbf{2. Show that:}
+\textbf{\large 2. Show that:}
 
 \begin{equation*}
 	\int_0^{T_0} \cos(k \omega_0 t) \cos(n \omega_0 t) dt =
