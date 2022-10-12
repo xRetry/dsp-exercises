@@ -1,0 +1,34 @@
+\newpage
+
+\textbf{\large 7. Proof the modulation theorem}
+
+Given That:
+
+\begin{align}
+	F(x(t)) &= \int_{-\infty}^\infty x(t) e^{-i \omega t} dt \\
+	\cos(\omega_0 t) &= \frac{e^{i \omega_0 t} + e^{-i \omega_0 t}}{2}
+\end{align}
+
+Follows:
+
+\begin{align*}
+	F(x(t) \cos(\omega_0 t)) &= \int_{-\infty}^\infty x(t) \cos(\omega_0 t) e^{-i \omega t} dt \\
+	&= \int_{-\infty}^\infty x(t) \frac{e^{i \omega_0 t} + e^{-i \omega_0 t}}{2} e^{-i \omega t} dt \\
+	&= \frac{1}{2} \left[ \int_{-\infty}^\infty x(t) e^{i \omega_0 t} e^{-i \omega t} dt + \int_{-\infty}^\infty x(t) e^{-i \omega_0 t} e^{-i \omega t} dt \right] \\
+	&= \frac{1}{2} \left[ F\left[x(t) e^{i \omega_0 t} \right] + F\left[x(t) e^{-i \omega_0 t} \right] \right] \\
+	&= \frac{1}{2} \left[ X(\omega - \omega_0) + X(\omega + \omega_0) \right]
+\end{align*}
+
+
+
+\textbf{\large 8. sinc-function}
+
+\textbf{
+	a) Show that the spectral density of the sinc-function is a boxcar. 
+	(Hint: Look at it the other way: what is the inverse of a boxcar function?)
+} 
+
+\textbf{
+	b) What is the relation of the distance between the zero crossings of the sinc to the width of the boxcar? 
+	Specifically, what happens for very dense/very sparse zero crossings?
+}
