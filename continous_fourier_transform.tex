@@ -1,6 +1,7 @@
 \newpage
 
 \textbf{\large 7. Proof the modulation theorem}
+\\
 
 Given That:
 
@@ -22,13 +23,42 @@ Follows:
 
 
 \textbf{\large 8. sinc-function}
+\\
 
 \textbf{
 	a) Show that the spectral density of the sinc-function is a boxcar. 
-	(Hint: Look at it the other way: what is the inverse of a boxcar function?)
 } 
+\\
+
+Given that:
+
+\begin{align}
+	\sin(x) &= \frac{1}{2i} \left( e^x - e^{-x} \right) \\
+	\text{sinc}(x) &= \frac{\sin(x)}{x}
+\end{align}
+
+Follows:
+
+\begin{align*}
+	x(t) &= \frac{1}{2 \pi} \int_{-\infty}^{\infty} e^{i \omega t} d \omega 
+	= \frac{1}{2 \pi} \int_{-W}^{W} e^{i \omega t} d \omega 
+	= \frac{1}{2 \pi i t} \left( e^{i W t} - e^{-i W t} \right) \\
+	&= \frac{W}{\pi W t} \sin(W t) 
+	= \frac{W}{\pi} \text{sinc}(W t) \\ 
+\end{align*}
 
 \textbf{
 	b) What is the relation of the distance between the zero crossings of the sinc to the width of the boxcar? 
 	Specifically, what happens for very dense/very sparse zero crossings?
 }
+\\
+
+Given that $2W$ represents the width of the boxcar function follows:
+
+\begin{align*}
+	x(t) &= \frac{W}{\pi} \text{sinc}(W t) = \frac{\sin(W t)}{\pi t}\\ 
+	&\Rightarrow x(t) = 0\ \forall\ t \in \left\{n \frac{\pi}{W}\ |\ n \in \mathbb{Z} \setminus \{0\} \right\} \\
+	&\implies l_0 = \frac{\pi}{W}
+\end{align*}
+
+The distance between zero crossings $l_0$ is inverse proporitional to the width of the boxcar $2W$.
