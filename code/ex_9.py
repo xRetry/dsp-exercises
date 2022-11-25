@@ -22,13 +22,13 @@ def add_signal(axs, t_min, t_max, num_pts, style="-", plot_fft=True):
         # Computing the FFT
         fft = np.abs(np.fft.fft(y))
         # Creating the corresponding frequency values
-        freq = np.arange(len(fft)) / (t_max - t_max) # divided by duration
+        freq = np.arange(len(fft)) / (t_max - t_min) # divided by duration
         # Removing parts beyond the nyquist frequency
         fft = fft[:int(len(fft)/2)]
         freq = freq[:int(len(freq)/2)]
 
         # Adding to frequency domain plot
-        axs[1].stem(freq, fft, use_line_collection=True)
+        axs[1].stem(freq, fft)
 
 
 def plot_signals():
@@ -36,7 +36,7 @@ def plot_signals():
     fs = [40, 80, 100, 125] # Hz
 
     # Creating subplots
-    _, axs = plt.subplots(len(fs), 2, sharex='col', figsize=(12, 12))
+    _, axs = plt.subplots(len(fs), 2, sharex='col', figsize=(10, 8))
     # Iterating over sampling frequencies
     for i, f in enumerate(fs):
         # Adding true signal to subplot
@@ -45,7 +45,7 @@ def plot_signals():
         add_signal(axs[i], 0, 1, f, "o-")
         # Configuring current row of subplots
         axs[i, 0].set_xlim([0, 0.1])
-        axs[i, 0].set_ylabel(f"Sampling Frequency: {f} Hz")
+        axs[i, 0].set_ylabel(f"Sampling Frequency\n{f} Hz")
         axs[i, 0].set_yticks([])
     
     # Configuring first and last subplot
