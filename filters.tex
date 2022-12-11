@@ -38,10 +38,11 @@
 %\end{figure}
 
 
-\textbf{\large 12. FIR filters}
+\textbf{\large 12. Multipying frequency responses}
 \\
 
-\textbf{a)}\\
+\textbf{a) Amplitude Plot}\\
+
 Given that:
 
 \begin{align}
@@ -62,7 +63,17 @@ Follows:
 	&= \frac{1}{8} \left(1 - \cos(2\omega)\right)
 \end{align*}
 
-\textbf{b)} \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{img/ex_12.png}
+	\captionsetup{width=5cm}
+	\caption{Amplitude for the given FIR filters.}
+\end{figure}
+
+\newpage
+
+\textbf{b) Time Domain Coefficiants} \\
+
 Given that:
 
 \begin{align}
@@ -77,3 +88,28 @@ Follows:
 	&= -\frac{1}{16} e^{2i\omega} + \frac{1}{8} e^{0i\omega} - \frac{1}{16} e^{-2i\omega} \\
 	&\Rightarrow \left\{ -\frac{1}{16},\ 0,\ \frac{1}{8},\ 0,\ -\frac{1}{16} \right\}
 \end{align*}
+
+\textbf{\large 12. IRR filter}
+\\
+
+Given that:
+
+\begin{align}
+	\{a_{-1},\ a_0,\ a_1\} &= \left\{-\frac{1}{2},\ 1,\ 0\right\} \\
+	\{b_{-1},\ b_0,\ b_1\} &= \left\{\frac{1}{8},\ \frac{1}{4},\ \frac{1}{8}\right\}
+\end{align}
+Follows:
+
+\begin{align*}
+	H(\omega) &= \frac{Y(\omega)}{X(\omega)}\\
+	&= \frac{\frac{1}{8} e^{i\omega} + \frac{1}{4} + \frac{1}{8} e^{-i\omega}}{-\frac{1}{2} e^{i\omega} + 1}\\
+	&= \frac{\frac{1}{4} (1 + cos(\omega))}{1 - \frac{1}{2} e^{i\omega}}
+	&= \frac{1 + cos(\omega)}{4 - 2 e^{i\omega}}
+\end{align*}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{img/ex_13.png}
+	\captionsetup{width=6cm}
+	\caption{Amplitude comparison for the filters from example 11a and 13.}
+\end{figure}
