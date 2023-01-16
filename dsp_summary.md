@@ -1,3 +1,31 @@
+# 2. Fourier Series
+
+Any piecewise continuous, bounded and **periodic** function can be represented as a Fourier Series.
+
+\begin{equation}
+  f(t) = \sum_{k=0}^\infty \left( A_k \cos(k\omega_0t) + B_k \sin(k\omega_0t) \right)
+\end{equation}
+
+- sin and cos are orthogonal basis functions
+- There is no information about frequencies between $k\omega_0$ and $(k+1)\omega_0$.
+Therefore, $\omega_0$ is also the sampling interval.
+The longer $T_0$, the smaller $\omega_0$ and the better the frequency resolution.
+
+  TODO: Add coefficiants formulas
+
+- An extra formula for $A_0$ is required, because of the factor 2.
+- Fourier analysis: computing $A_k$ and $B_k$ from $f(t)$
+- Fourier synthesis: computing $f(t)$ from $A_k$ and $B_k$
+- When all $k$ are accounted for, analysis followed by synthesis is a no-op
+
+  TODO: Time shift
+
+- Kinks in the function require many $k$s for a good fit
+- Steps require even more $k$s and lead to the Gibbs phenomenon:
+There persists an overshoot, but the overshoot duration decreases.
+
+
+
 # 8. Laplace Transform
 
 The Laplace Transform is an extension of the Fourier transform.
