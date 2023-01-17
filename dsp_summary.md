@@ -2,14 +2,21 @@
 
 Any piecewise continuous, bounded and **periodic** function can be represented as a Fourier Series.
 
-\begin{equation}
+```math
   f(t) = \sum_{k=0}^\infty \left( A_k \cos(k\omega_0t) + B_k \sin(k\omega_0t) \right)
-\end{equation}
+```
+
+Alternatively with amplitude and phase:
+
+```math
+  f(t) = \sum_{k=0}^\infty a_k \cos(k\omega_0t - \phi_k)
+```
 
 - sin and cos are orthogonal basis functions
 - There is no information about frequencies between $k\omega_0$ and $(k+1)\omega_0$.
 Therefore, $\omega_0$ is also the sampling interval.
 The longer $T_0$, the smaller $\omega_0$ and the better the frequency resolution.
+- Even signal $\Rightarrow$ zero phase
 
   TODO: Add coefficiants formulas
 
@@ -26,15 +33,18 @@ There persists an overshoot, but the overshoot duration decreases.
 
 
 
+
 # 8. Laplace Transform
 
 The Laplace Transform is an extension of the Fourier transform.
 It includes sinusoids and exponentials to represent a signal and allows a sparse description of a analogue signal in term of poles and zeros.
 
+$$
 \begin{align}
   F(s) &= \int_{-\infty}^\infty f(t) e^{-st} dt\\
   s &= \sigma + i\omega
 \end{align}
+$$
 
 - $\sigma = 0$: the Laplace transform becomes a Fourier transform
 - $\sigma > 0$: represents a damped signal.
@@ -43,37 +53,41 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 
 **Inverse Laplace transform**
 
-\begin{equation}
+```math
   f_\sigma(t) = \frac{1}{2 \pi i} \int_{\sigma + i\omega}^{\sigma - i\omega} F(s) e^{st} ds
-\end{equation}
+```
 
 - The inverse Laplace transform is not unique. Different $\sigma$ may result in different signals.
 
 **General transfer function**
 
-\begin{equation}
+```math
   F(s) = \frac{b_L \prod_{l=1}^L (s-z_l)}{a_M \prod_{m=1}{M} (s-p_m)}
-\end{equation}
+```
 
 - Each pole reduces the amplitude $\prop \omega^{-1}$, each zero amplifies it $\prop \omega^{-1}$
 - Each pole shifts the phase -90deg, each zero +90deg
 
 **Single Pole**
 
+$$
 \begin{align}
   F(s) &= \frac{1}{s-p}\\
   F(\omega) &= {1}{i\omega-p} = \frac{1}{r e^{i\phi}} = \frac{1}{r} e^{-i\phi}
 \end{align}
+$$
 
 - The denominator can be interpreted as a vector pointing to the imaginary axis
 - $\omega >> \omega_c$: the amplitude decays $A \prop \omega^{-1}$, the phase converges towards -90 deg
 
 **Single Zero**
 
+$$
 \begin{align}
   F(s) &= s-z\\
   F(\omega) &= r e^{i\phi}
 \end{align}
+$$
 
 - $\omega >> \omega_c$: the amplitude decays $A \prop \omega^{-1}$, the phase converges towards -90 deg
 
