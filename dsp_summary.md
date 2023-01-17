@@ -46,10 +46,29 @@ There persists an overshoot, but the overshoot duration decreases.
 Conversion between coefficiants:
 
 $$ \begin{align}
-  a_0 = \sqrt{A_0^2} = \sqrt{F_0 F_0*} \\
+  a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0*} \\
   a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
-  \phi_k = \atan\frac{B_k}{A_k} = - \atan\frac{Im\{F_k\}}{Re\{F_k\}}
+  \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im\{F_k\}}{Re\{F_k\}}
 \end{align} $$ 
+
+# 4. Windows and Resolution
+
+In practice, signal analysis is always performed over limited time.
+This can be modeled as a window function sliding across the signal.
+Mathematically, the window function is multiplied with the signal, which mean a convolution in the frequency domain.
+
+The shape of the window function determines the frequency domain resolution.
+They are characterized by:
+
+- Energy in the central peak compared to the total energy $\rightarrow$ The energy in the sidelobes will produce spectral artifacts
+- The height of the first sidelobe compared to the central peak $\rightarrow$ The sidelobes may mask small spectral amplitudes near larger ones
+- The half width (width at half amplitude) of the central peak $\rightarrow$ A broad peak will nearby frequencies
+
+Some window functions:
+
+- Boxcar: smallest half width, strongest sidelobes
+- Kaiser-Bessel: broad half width, very weak sidelobes
+- Hanning or Hamming: often good compromise
 
 # 8. Laplace Transform
 
