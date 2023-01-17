@@ -16,7 +16,7 @@ As complex valued exponential:
 
 $$ \begin{equation}
   f(t) = \sum_{k=-\infty}^{\infty} \left( F_k e^{ik\omega_0t} \right)  
-$$ \end{equation}
+\end{equation} $$
 
 - sin and cos are orthogonal basis functions
 - There is no information about frequencies between $k\omega_0$ and $(k+1)\omega_0$.
@@ -28,7 +28,7 @@ The longer $T_0$, the smaller $\omega_0$ and the better the frequency resolution
 
 $$ \begin{equation}
   F_k = \frac{1}{T_0} \oint f(t) e^{-ik\omega_0t} dt
-$$ \end{equation}
+\end{equation} $$
 
 - An extra formula for $A_0$ is required, because of the factor 2.
 - Fourier analysis: computing $A_k$ and $B_k$ from $f(t)$
@@ -49,7 +49,7 @@ $$ \begin{align}
   a_0 = \sqrt{A_0^2} = \sqrt{F_0 F_0*} \\
   a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
   \phi_k = \atan\frac{B_k}{A_k} = - \atan\frac{Im\{F_k\}}{Re\{F_k\}}
-$$ \end{align}
+\end{align} $$ 
 
 # 8. Laplace Transform
 
@@ -82,7 +82,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
   F(s) = \frac{b_L \prod_{l=1}^L (s-z_l)}{a_M \prod_{m=1}{M} (s-p_m)}
 ```
 
-- Each pole reduces the amplitude $\prop \omega^{-1}$, each zero amplifies it $\prop \omega^{-1}$
+- Each pole reduces the amplitude $\propto \omega^{-1}$, each zero amplifies it $\propto \omega^{-1}$
 - Each pole shifts the phase -90deg, each zero +90deg
 
 **Single Pole**
@@ -95,7 +95,7 @@ $$
 $$
 
 - The denominator can be interpreted as a vector pointing to the imaginary axis
-- $\omega >> \omega_c$: the amplitude decays $A \prop \omega^{-1}$, the phase converges towards -90 deg
+- $\omega >> \omega_c$: the amplitude decays $A \propto \omega^{-1}$, the phase converges towards -90 deg
 
 **Single Zero**
 
@@ -106,7 +106,7 @@ $$
 \end{align}
 $$
 
-- $\omega >> \omega_c$: the amplitude decays $A \prop \omega^{-1}$, the phase converges towards -90 deg
+- $\omega >> \omega_c$: the amplitude decays $A \propto \omega^{-1}$, the phase converges towards -90 deg
 
 A stable, causal signal is:
 
