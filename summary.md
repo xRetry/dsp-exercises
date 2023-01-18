@@ -51,6 +51,94 @@ $$ \begin{align}
   \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im\{F_k\}}{Re\{F_k\}}
 \end{align} $$ 
 
+# 3. Fourier Transform
+
+- Results from the Fourier Series, if the considered time interval goes to infinity ($T_0 \rightarrow \infty$).
+- Applies to **non-periodic** functions
+
+$$ \begin{align}
+  F(\omega) &= \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt \\
+  f(t) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i \omega t} d\omega
+\end{align} $$
+
+Differentiation in time domain becomes multiplication in frequency domain:
+
+$$ \begin{align}
+  \frac{d}{dt} f(t) &\rightarrow i\omega F(\omega)\\
+  \int f(t) &\rightarrow \frac{1}{\omega} F(\omega)
+\end{align} $$
+
+Convolution in time domain becomes multiplication in frequency domain:
+
+$$ \begin{align}
+  h(t) &= f(t) \star g(t) = \int_{-\infty}^\infty f(\tau) g(t - \tau) d\tau\\
+  H(\omega) &= F(\omega) G(\omega)
+\end{align} $$
+
+> TODO: Correlation
+
+> TODO: Plancherel's theorem
+
+> TODO: Parseval's theorem
+
+**Dirac delta function**
+
+The Dirac delta function ($\delta(t)$) can be used to pick a value at a specific time in an integral.
+In the frequency domain, the $\delta$-function becomes 1 (same across all frequencies).
+
+$$ \begin{align}
+  \delta(t) &\rightarrow 1\\
+  2 \pi \delta(\omega) &\rightarrow 1
+\end{align} $$
+
+Duality theorem:
+
+$$ \begin{align}
+  f(t) &\leftrightarrow F(\omega) \\
+  F(t) &\leftrightarrow 2 \pi f (-\omega)
+\end{align} $$
+
+Except for $2\pi$ and the inversion, the two members of the Fourier pair are interchangable.
+
+**Heaviside step function**
+
+The delta function is very important, but physically not realizeable (infinite amplitude).
+The step function is a way around this.
+
+$$ \begin{equation}
+  FT\[u(t)\] = \frac{1}{i\omega} + \pi \delta(\omega)
+\end{equation} $$
+
+**Sign function**
+
+The sign function is not square integrable and cannot be Fourier transformed.
+However, with a limit-process:
+
+$$ \begin{equation}
+  FT\[sgn(t)\] = \frac{2}{i\omega}
+\end{equation} $$
+
+**Boxcar function**
+
+$$ \begin{align}
+  F(\kappa) &= T_0 \frac{\sin(\kappa)}{\kappa}\\
+  \kappa &= \frac{\omega T_0}{2}
+\end{align} $$
+
+**Gaussian distribution**
+
+$$ \begin{align}
+  f(t) &= \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{t^2}{2\sigma^2}}\\
+  F(\omega) &= e^{-\frac{\sigma^2 \omega^2}{2}}
+\end{align} $$
+
+The Fourier transform is another Gaussian, but with inverse standard deviation $1/\sigma$.
+
+This finding can be generalized to the *uncertainty relation*.
+The more localized a signal in the time domain, the more broader in the frequency domain and vice versa.
+
+> TODO: 2D FT
+
 # 4. Windows and Resolution
 
 In practice, signal analysis is always performed over limited time.
