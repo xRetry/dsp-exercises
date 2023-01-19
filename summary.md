@@ -134,7 +134,7 @@ $$ \begin{align}
 
 The Fourier transform is another Gaussian, but with inverse standard deviation $1/\sigma$.
 
-This finding can be generalized to the *uncertainty relation*.
+This finding can be generalized to the **uncertainty relation**.
 The more localized a signal in the time domain, the more broader in the frequency domain and vice versa.
 
 > TODO: 2D FT
@@ -157,6 +157,54 @@ Some window functions:
 - Boxcar: smallest half width, strongest sidelobes
 - Kaiser-Bessel: broad half width, very weak sidelobes
 - Hanning or Hamming: often good compromise
+
+# 5. Discrete Fourier Transform
+
+$$ \begin{align} 
+F_k &= \frac{1}{N} \sum_{j=0}^{N-1} f(j e^{-i2\pi\frac{jk}{N}}) \\
+f_j &= \sum_{k=0}{N-1} F_k e^{i2\pi\frac{jk}{N}}
+\end{align} $$
+
+$F_k$ are a spectrum, not a spectral density.
+
+The kernel $W_k^{-jk} = e^{-2\pi\frac{jk}{N}}$ of the DFT is discrete and periodic in $N$.
+This means the kernel has only $N$ values and each value is required $2N$ time in the sum.
+In an inverse DFT, the kernel value are required in counter-clockwise order.
+
+Since $n = jk$, the time and frequency domain indices are indistinguishable, which means the frequency series is also periodic in $N$.
+Therefore, the upper half of the frequency series ($N/2..N-1$) contains no new information and is complex conjugate of the lower half.
+The threshold is called the **Nyquist Frequency**.
+
+$$ \begin{equation}
+  f_{\text{nyq}} = \frac{f_s}{2} = \frac{1}{2 \deltat}
+\end{equation} $$
+
+$F_{N/2}$ is always real-valued, the corresponding $f_j$ at the Nyquist frequency is always even.
+An odd signal at Nyquist cannot be respresented.
+
+When the sample rate is below the Nyquist frequency, the orignal signal appears at a different frequency (their **alias**).
+To avoid aliasing artifacts in signals, an analogue low-pass filter can be applied to remove frequencies above Nyquist.
+
+It is possible to reconstruct the original continuous signal if the sampling was done correctly (unaliased) with sinc-interpolation.
+
+> TODO: Fast Fourier transform
+
+# 6. Discrete Time Fourier Transform
+
+- Is the Fouier transform for aperiodic, discrete signals.
+- In praxis used when waiting for the end of a data-stream is not an option
+
+$$ \begin{align}
+  F(\omega) &= \sum_{j=-\infty}^{\imfty} f_j e^{-i\omegaj\deltat} \\
+  f_l &= \frac{1}{\omega_s} \int_{-\omega_s/2}^{\omega_s/2} F(\omega) e^{i\oemga l \delta t} d\omega
+\end{align} $$
+
+$F(\omega)$ is no longer a spectral density, just a spectrum, even though it is continuous.
+
+The DTFT differs from the DFT by:
+
+- Different boundary conditions, relevant for convolution and other operators
+- A window function is required for never ending data-streams, which adds the window postition as a new dimension
 
 # 8. Laplace Transform
 
