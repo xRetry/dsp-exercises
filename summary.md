@@ -83,7 +83,7 @@ $$ \begin{align}
 
 **Dirac delta function**
 
-The Dirac delta function ($\delta(t)$) can be used to pick a value at a specific time in an integral.
+The Dirac delta function ($\Delta (t)$) can be used to pick a value at a specific time in an integral.
 In the frequency domain, the $\delta$-function becomes 1 (same across all frequencies).
 
 $$ \begin{align}
@@ -176,7 +176,7 @@ Therefore, the upper half of the frequency series ($N/2..N-1$) contains no new i
 The threshold is called the **Nyquist Frequency**.
 
 $$ \begin{equation}
-  f_{\text{nyq}} = \frac{f_s}{2} = \frac{1}{2 \deltat}
+  f_{\text{nyq}} = \frac{f_s}{2} = \frac{1}{2 \Delta t}
 \end{equation} $$
 
 $F_{N/2}$ is always real-valued, the corresponding $f_j$ at the Nyquist frequency is always even.
@@ -195,8 +195,8 @@ It is possible to reconstruct the original continuous signal if the sampling was
 - In praxis used when waiting for the end of a data-stream is not an option
 
 $$ \begin{align}
-  F(\omega) &= \sum_{j=-\infty}^{\imfty} f_j e^{-i\omegaj\deltat} \\
-  f_l &= \frac{1}{\omega_s} \int_{-\omega_s/2}^{\omega_s/2} F(\omega) e^{i\oemga l \delta t} d\omega
+  F(\omega) &= \sum_{j=-\infty}^{\infty} f_j e^{-i\omega j\Delta t} \\
+  f_l &= \frac{1}{\omega_s} \int_{-\omega_s/2}^{\omega_s/2} F(\omega) e^{i\omega l \delta t} d\omega
 \end{align} $$
 
 $F(\omega)$ is no longer a spectral density, just a spectrum, even though it is continuous.
@@ -205,6 +205,49 @@ The DTFT differs from the DFT by:
 
 - Different boundary conditions, relevant for convolution and other operators
 - A window function is required for never ending data-streams, which adds the window postition as a new dimension
+
+# 7. LTI Filters
+
+- LTI = linear time-invariant
+
+$$ \begin{align}
+  Y(\omega) &= H(\omega) X(\omega) \\
+  y(t) &= (x \star h)(t)
+\end{align} $$
+
+$H(\omega)$ is called the **frequency response function** and $h(t)$ the **impulse response function**.
+Ideally these response function would be found using a Dirac pulse and observing the result.
+Practially it can be done using a step function, which is the differentiated.
+
+**Finite Inpulse Response (FIR)**
+For a discrete aperiodic signal, the convolution becomes $y_i = \sum_{l=-\infty}^\infty h_l x_{i-l}$
+If the filter only has a finite length of no-zero $h$ elements, we can write $y_i = \sum_{l=-L}^L h_l x_{i-l}$
+
+**Inifinite Impulse Response (IIR)**
+The filter is no only a linear combination of the input but also the output.
+
+$$ \begin{align}
+  y_i &= \frac{1}{a_0} \left( \sum_{l=-L}^{L} b_l x_{i-l} - \sum_{m=-M; m\neq0}^{M} a_m y_{i-m} \right) \\
+  Y(\omega) &= H(\omega) X(\omega) \\
+  H(\omega) &= \frac{B(\omega)}{A(\omega)}
+\end{align} $$
+
+It feeds a past (or future) filter result back into the filter.
+Therefore, it a memory, reaching back to infinity.
+It needs to be expressed through recursion.
+For certain $\omega_r$, it could happen that $A(\omega_r)=0$ and $X(\omega_r) \neq 0$, which leads to an unbounded output.
+This means $A(\omega)$ needs to be chosed with caution.
+
+Advantage:
+
+- Can have steep flanks, which makes them computationally efficient
+
+Disadvantage:
+
+- Potentially unstable (Can produce unbounded output for bounded input)
+- Accumulation of numerical inaccuracies
+
+> TODO: Analogue filters
 
 # 8. Laplace Transform
 
