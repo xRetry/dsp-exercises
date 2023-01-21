@@ -49,7 +49,7 @@ $$ \begin{align}
   \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im\{F_k\}}{Re\{F_k\}}
 \end{align} $$ 
 
-## Hermitian symmetry
+### Hermitian symmetry
 
 $f(t)$ is real-valued:
 
@@ -78,7 +78,7 @@ $$ \begin{align}
   \int f(t) &\rightarrow \frac{1}{\omega} F(\omega)
 \end{align} $$
 
-## Convolution and Correlation
+### Convolution and Correlation
 
 **Convolution** in time domain becomes multiplication in frequency domain:
 
@@ -92,7 +92,7 @@ $$ \begin{align}
 - Convolution and correlation $\rightarrow$ identical amplitude spectra
 - Deconvolution and correlation $\rightarrow$ identical phase spectra
 
-## Plancherel's theorem
+### Plancherel's theorem
 
 - relates the zero-lag correlation to the spectral densities
 
@@ -100,7 +100,7 @@ $$ \begin{equation}
   \int_{-\infty}^{\infty} f^\star(t) g(t) dt = \frac{1}{2 \pi} \int_{-\infty}^\infty F^\star(\omega) G(\omega) d\omega
 \end{equation} $$
 
-## Parseval's theorem
+### Parseval's theorem
 
 - Parcherel's theorem when $f=g$
 
@@ -114,7 +114,7 @@ $$ \begin{equation}
 
 $\Rightarrow$ The total energy of the signal is equal in the time and frequency domain (up to a constant).
 
-## Dirac delta function
+### Dirac delta function
 
 The Dirac delta function ($\Delta (t)$) can be used to pick a value at a specific time in an integral.
 In the frequency domain, the $\delta$-function becomes 1 (same across all frequencies).
@@ -133,7 +133,7 @@ $$ \begin{align}
 
 Except for $2\pi$ and the inversion, the two members of the Fourier pair are interchangable.
 
-## Heaviside step function
+### Heaviside step function
 
 The delta function is very important, but physically not realizeable (infinite amplitude).
 The step function is a way around this.
@@ -142,7 +142,7 @@ $$ \begin{equation}
   FT\[u(t)\] = \frac{1}{i\omega} + \pi \delta(\omega)
 \end{equation} $$
 
-## Sign function
+### Sign function
 
 The sign function is not square integrable and cannot be Fourier transformed.
 However, with a limit-process:
@@ -151,14 +151,14 @@ $$ \begin{equation}
   FT\[sgn(t)\] = \frac{2}{i\omega}
 \end{equation} $$
 
-## Boxcar function
+### Boxcar function
 
 $$ \begin{align}
   F(\kappa) &= T_0 \frac{\sin(\kappa)}{\kappa}\\
   \kappa &= \frac{\omega T_0}{2}
 \end{align} $$
 
-## Gaussian distribution
+### Gaussian distribution
 
 $$ \begin{align}
   f(t) &= \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{t^2}{2\sigma^2}}\\
@@ -170,7 +170,7 @@ The Fourier transform is another Gaussian, but with inverse standard deviation $
 This finding can be generalized to the **uncertainty relation**.
 The more localized a signal in the time domain, the more broader in the frequency domain and vice versa.
 
-## 2D Fourier Transform
+### 2D Fourier Transform
 
 - For example when seismic sensors are deployed along a line (time and position)
 - The 2D integral can be seperated to 1D transforms $F(k_x, k_y) = FT_y\{FT_x\{f(x, y)\}\}$
@@ -209,7 +209,7 @@ The kernel $W_k^{-jk} = e^{-2\pi\frac{jk}{N}}$ of the DFT is discrete and period
 This means the kernel has only $N$ values and each value is required $2N$ time in the sum.
 In an inverse DFT, the kernel value are required in counter-clockwise order.
 
-## Nyquist Frequency
+### Nyquist Frequency
 
 Since $n = jk$, the time and frequency domain indices are indistinguishable, which means the frequency series is also periodic in $N$.
 Therefore, the upper half of the frequency series ($N/2..N-1$) contains no new information and is complex conjugate of the lower half.
@@ -222,14 +222,14 @@ $$ \begin{equation}
 $F_{N/2}$ is always real-valued, the corresponding $f_j$ at the Nyquist frequency is always even.
 An odd signal at Nyquist cannot be respresented.
 
-## Aliasing
+### Aliasing
 
 When the sample rate is below the Nyquist frequency, the orignal signal appears at a different frequency (their **alias**).
 To avoid aliasing artifacts in signals, an analogue low-pass filter can be applied to remove frequencies above Nyquist.
 
 It is possible to reconstruct the original continuous signal if the sampling was done correctly (unaliased) with sinc-interpolation.
 
-## Fast Fourier Transform
+### Fast Fourier Transform
 
 - Recursively split up a series of points in even and odd parts.
 Each split halfes the computational work.
@@ -265,11 +265,11 @@ $H(\omega)$ is called the **frequency response function** and $h(t)$ the **impul
 Ideally these response function would be found using a Dirac pulse and observing the result.
 Practially it can be done using a step function, which is the differentiated.
 
-## Finite Inpulse Response (FIR)
+### Finite Inpulse Response (FIR)
 For a discrete aperiodic signal, the convolution becomes $y_i = \sum_{l=-\infty}^\infty h_l x_{i-l}$
 If the filter only has a finite length of no-zero $h$ elements, we can write $y_i = \sum_{l=-L}^L h_l x_{i-l}$
 
-## Inifinite Impulse Response (IIR)
+### Inifinite Impulse Response (IIR)
 The filter is no only a linear combination of the input but also the output.
 
 $$ \begin{align}
@@ -293,7 +293,7 @@ Disadvantage:
 - Potentially unstable (Can produce unbounded output for bounded input)
 - Accumulation of numerical inaccuracies
 
-## Analogue filters
+### Analogue filters
 
 - For analogue filters, time domain convolution is impractical (can't store history)
 - Instead, use derivatives to memorize the past (Taulor's theorem)
@@ -310,7 +310,7 @@ $$ \begin{equation}
   H(\omega) = \frac{B(\omega)}{A(\omega)} = \frac{\sum_{l=-L}^L b_l (i\omega)^l}{\sum_{m=-M}^M a_m (i\omega)^m}
 \end{equation} $$
 
-**Butterworth filter**: maximally steep slopes and maximally flat transfer in the passband.
+*Butterworth filter**: maximally steep slopes and maximally flat transfer in the passband.
 
 # 8. Laplace Transform
 
@@ -324,7 +324,7 @@ $$
 \end{align}
 $$
 
-- $\sigma = 0$: the Laplace transform becomes a Fourier transform
+-$\sigma = 0$: the Laplace transform becomes a Fourier transform
 - $\sigma > 0$: represents a damped signal.
 Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes for $t \rightarrow + \infty$ (anti-causal part)
 - Depending on the signal, the system can still be unstable in the causal part if $f(t)$ increases faster than the damping
@@ -332,7 +332,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 **Inverse Laplace transform**
 
 ```math
-  f_\sigma(t) = \frac{1}{2 \pi i} \int_{\sigma + i\omega}^{\sigma - i\omega} F(s) e^{st} ds
+ f_\sigma(t) = \frac{1}{2 \pi i} \int_{\sigma + i\omega}^{\sigma - i\omega} F(s) e^{st} ds
 ```
 
 - The inverse Laplace transform is not unique. Different $\sigma$ may result in different signals.
@@ -346,7 +346,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 - Each pole reduces the amplitude $\propto \omega^{-1}$, each zero amplifies it $\propto \omega^{-1}$
 - Each pole shifts the phase -90deg, each zero +90deg
 
-**Single Pole**
+*Single Pole**
 
 $$
 \begin{align}
@@ -365,7 +365,7 @@ $$
   F(s) &= s-z\\
   F(\omega) &= r e^{i\phi}
 \end{align}
-$$
+$
 
 - $\omega >> \omega_c$: the amplitude decays $A \propto \omega^{-1}$, the phase converges towards -90 deg
 
@@ -374,7 +374,6 @@ A stable, causal signal is:
 - minimum phase, if all zeros are on the left s-plane
 - maximum phase, if all zeros are on the right s-plane
 - mixed phase, otherwise
-
 Poles can be placed off the real axis:
 
 - The closer to the imaginary axis, the larger the amplification
