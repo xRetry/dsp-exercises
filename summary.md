@@ -24,24 +24,22 @@ Therefore, $\omega_0$ is also the sampling interval.
 The longer $T_0$, the smaller $\omega_0$ and the better the frequency resolution.
 - Even signal $\Rightarrow$ zero phase
 
-> TODO: Add coefficiants formulas
-
-$$ \begin{equation}
-  F_k = \frac{1}{T_0} \oint f(t) e^{-ik\omega_0t} dt
-\end{equation} $$
+$$ \begin{align}
+  A_0 &= \frac{1}{T_0} \oint f(t) dt \\
+  B_0 &= 0\\
+  A_k &= \frac{2}{T_0} \oint f(t) \cos(k \omega_0 t) dt\\
+  B_k &= \frac{2}{T_0} \oint f(t) \sin(k \omega_0 t) dt\\
+  F_k &= \frac{1}{T_0} \oint f(t) e^{-ik\omega_0t} dt
+\end{align} $$
 
 - An extra formula for $A_0$ is required, because of the factor 2.
 - Fourier analysis: computing $A_k$ and $B_k$ from $f(t)$
 - Fourier synthesis: computing $f(t)$ from $A_k$ and $B_k$
 - When all $k$ are accounted for, analysis followed by synthesis is a no-op
-
-> TODO: Time shift
-
+- A time shifted signal has different phase but same amplitude spectrum
 - Kinks in the function require many $k$s for a good fit
 - Steps require even more $k$s and lead to the Gibbs phenomenon:
 There persists an overshoot, but the overshoot duration decreases.
-
-> TODO: Hermitian symmetry
 
 Conversion between coefficiants:
 
@@ -50,6 +48,18 @@ $$ \begin{align}
   a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
   \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im\{F_k\}}{Re\{F_k\}}
 \end{align} $$ 
+
+## Hermitian symmetry
+
+$f(t)$ is real-valued:
+
+- If $f(t) is even $\Rightarrow$ $F_k$ is even and and real ($B_k = 0$)
+- If $f(t) is odd $\Rightarrow$ $F_k$ is odd and and imaginary ($A_k = 0$)
+
+$f(t)$ is purely imaginary:
+
+- If $f(t) is even $\Rightarrow$ $F_k$ is even and and imaginary ($A_k = 0$)
+- If $f(t) is odd $\Rightarrow$ $F_k$ is odd and and real ($B_k = 0$)
 
 # 3. Fourier Transform
 
@@ -68,20 +78,43 @@ $$ \begin{align}
   \int f(t) &\rightarrow \frac{1}{\omega} F(\omega)
 \end{align} $$
 
-Convolution in time domain becomes multiplication in frequency domain:
+## Convolution and Correlation
+
+**Convolution** in time domain becomes multiplication in frequency domain:
 
 $$ \begin{align}
   h(t) &= f(t) \star g(t) = \int_{-\infty}^\infty f(\tau) g(t - \tau) d\tau\\
   H(\omega) &= F(\omega) G(\omega)
 \end{align} $$
 
-> TODO: Correlation
+**Correlation** is the same as convolution, but with flipping one signal.
 
-> TODO: Plancherel's theorem
+- Convolution and correlation $\rightarrow$ identical amplitude spectra
+- Deconvolution and correlation $\rightarrow$ identical phase spectra
 
-> TODO: Parseval's theorem
+## Plancherel's theorem
 
-**Dirac delta function**
+- relates the zero-lag correlation to the spectral densities
+
+$$ \begin{equation}
+  \int_{-\infty}^{\infty} f^\star(t) g(t) dt = \frac{1}{2 \pi} \int_{-\infty}^\infty F^\star(\omega) G(\omega) d\omega
+\end{equation} $$
+
+## Parseval's theorem
+
+- Parcherel's theorem when $f=g$
+
+$$ \begin{equation}
+  \int_{-\infty}^\infty |f(t)|^2 dt = \frac{1}{2\pi} \int_{-\infty}^\infty |F(\omega)|^2 d\omega
+\end{equation} $$
+
+- $|f(t)|^2$ is the instantaneous power
+- $|F(\omega)|^2$ is the Energy Spectral Denstiy (ESD)
+- $|F_k|^2 would be called the Power Spectral Density (PSD)
+
+$\Rightarrow$ The total energy of the signal is equal in the time and frequency domain (up to a constant).
+
+## Dirac delta function
 
 The Dirac delta function ($\Delta (t)$) can be used to pick a value at a specific time in an integral.
 In the frequency domain, the $\delta$-function becomes 1 (same across all frequencies).
@@ -100,7 +133,7 @@ $$ \begin{align}
 
 Except for $2\pi$ and the inversion, the two members of the Fourier pair are interchangable.
 
-**Heaviside step function**
+## Heaviside step function
 
 The delta function is very important, but physically not realizeable (infinite amplitude).
 The step function is a way around this.
@@ -109,7 +142,7 @@ $$ \begin{equation}
   FT\[u(t)\] = \frac{1}{i\omega} + \pi \delta(\omega)
 \end{equation} $$
 
-**Sign function**
+## Sign function
 
 The sign function is not square integrable and cannot be Fourier transformed.
 However, with a limit-process:
@@ -118,14 +151,14 @@ $$ \begin{equation}
   FT\[sgn(t)\] = \frac{2}{i\omega}
 \end{equation} $$
 
-**Boxcar function**
+## Boxcar function
 
 $$ \begin{align}
   F(\kappa) &= T_0 \frac{\sin(\kappa)}{\kappa}\\
   \kappa &= \frac{\omega T_0}{2}
 \end{align} $$
 
-**Gaussian distribution**
+## Gaussian distribution
 
 $$ \begin{align}
   f(t) &= \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{t^2}{2\sigma^2}}\\
@@ -137,7 +170,12 @@ The Fourier transform is another Gaussian, but with inverse standard deviation $
 This finding can be generalized to the **uncertainty relation**.
 The more localized a signal in the time domain, the more broader in the frequency domain and vice versa.
 
-> TODO: 2D FT
+## 2D Fourier Transform
+
+- For example when seismic sensors are deployed along a line (time and position)
+- The 2D integral can be seperated to 1D transforms $F(k_x, k_y) = FT_y\{FT_x\{f(x, y)\}\}$
+- Rotating an image is quivalent to rotating in the 2D Fourier domain
+- The spectral denstiy $F(f)$ on a signal traveling with constant velocity $c=f/k$ projects into a line with slope $c$
 
 # 4. Windows and Resolution
 
@@ -171,6 +209,8 @@ The kernel $W_k^{-jk} = e^{-2\pi\frac{jk}{N}}$ of the DFT is discrete and period
 This means the kernel has only $N$ values and each value is required $2N$ time in the sum.
 In an inverse DFT, the kernel value are required in counter-clockwise order.
 
+## Nyquist Frequency
+
 Since $n = jk$, the time and frequency domain indices are indistinguishable, which means the frequency series is also periodic in $N$.
 Therefore, the upper half of the frequency series ($N/2..N-1$) contains no new information and is complex conjugate of the lower half.
 The threshold is called the **Nyquist Frequency**.
@@ -182,12 +222,18 @@ $$ \begin{equation}
 $F_{N/2}$ is always real-valued, the corresponding $f_j$ at the Nyquist frequency is always even.
 An odd signal at Nyquist cannot be respresented.
 
+## Aliasing
+
 When the sample rate is below the Nyquist frequency, the orignal signal appears at a different frequency (their **alias**).
 To avoid aliasing artifacts in signals, an analogue low-pass filter can be applied to remove frequencies above Nyquist.
 
 It is possible to reconstruct the original continuous signal if the sampling was done correctly (unaliased) with sinc-interpolation.
 
-> TODO: Fast Fourier transform
+## Fast Fourier Transform
+
+- Recursively split up a series of points in even and odd parts.
+Each split halfes the computational work.
+- The resulting algorithm is $O(n \text{log}(n))$ instead of $O(n^2)$
 
 # 6. Discrete Time Fourier Transform
 
@@ -219,11 +265,11 @@ $H(\omega)$ is called the **frequency response function** and $h(t)$ the **impul
 Ideally these response function would be found using a Dirac pulse and observing the result.
 Practially it can be done using a step function, which is the differentiated.
 
-**Finite Inpulse Response (FIR)**
+## Finite Inpulse Response (FIR)
 For a discrete aperiodic signal, the convolution becomes $y_i = \sum_{l=-\infty}^\infty h_l x_{i-l}$
 If the filter only has a finite length of no-zero $h$ elements, we can write $y_i = \sum_{l=-L}^L h_l x_{i-l}$
 
-**Inifinite Impulse Response (IIR)**
+## Inifinite Impulse Response (IIR)
 The filter is no only a linear combination of the input but also the output.
 
 $$ \begin{align}
@@ -247,7 +293,24 @@ Disadvantage:
 - Potentially unstable (Can produce unbounded output for bounded input)
 - Accumulation of numerical inaccuracies
 
-> TODO: Analogue filters
+## Analogue filters
+
+- For analogue filters, time domain convolution is impractical (can't store history)
+- Instead, use derivatives to memorize the past (Taulor's theorem)
+
+For analogue FIR filters:
+
+$$ \begin{equation}
+  H(\omega) = \sum_{l=-L}^L h_l (i\omega)^l
+\end{equation} $$
+
+For analogue IIR filters:
+
+$$ \begin{equation}
+  H(\omega) = \frac{B(\omega)}{A(\omega)} = \frac{\sum_{l=-L}^L b_l (i\omega)^l}{\sum_{m=-M}^M a_m (i\omega)^m}
+\end{equation} $$
+
+**Butterworth filter**: maximally steep slopes and maximally flat transfer in the passband.
 
 # 8. Laplace Transform
 
