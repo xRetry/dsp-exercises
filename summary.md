@@ -46,20 +46,20 @@ Conversion between coefficiants:
 $$ \begin{align}
   a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0*} \\
   a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
-  \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im\{F_k\}}{Re\{F_k\}}
+  \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im \{ F_k \} }{Re \{ F_k \} }
 \end{align} $$ 
 
 ### Hermitian symmetry
 
 $f(t)$ is real-valued:
 
-- If $f(t) is even $\Rightarrow$ $F_k$ is even and and real ($B_k = 0$)
-- If $f(t) is odd $\Rightarrow$ $F_k$ is odd and and imaginary ($A_k = 0$)
+- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and real ($B_k = 0$)
+- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and imaginary ($A_k = 0$)
 
 $f(t)$ is purely imaginary:
 
-- If $f(t) is even $\Rightarrow$ $F_k$ is even and and imaginary ($A_k = 0$)
-- If $f(t) is odd $\Rightarrow$ $F_k$ is odd and and real ($B_k = 0$)
+- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and imaginary ($A_k = 0$)
+- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and real ($B_k = 0$)
 
 # 3. Fourier Transform
 
@@ -173,7 +173,7 @@ The more localized a signal in the time domain, the more broader in the frequenc
 ### 2D Fourier Transform
 
 - For example when seismic sensors are deployed along a line (time and position)
-- The 2D integral can be seperated to 1D transforms $F(k_x, k_y) = FT_y\{FT_x\{f(x, y)\}\}$
+- The 2D integral can be seperated to 1D transforms $F(k_x, k_y) = FT_y \{ FT_x \{ f(x, y) \} \} $
 - Rotating an image is quivalent to rotating in the 2D Fourier domain
 - The spectral denstiy $F(f)$ on a signal traveling with constant velocity $c=f/k$ projects into a line with slope $c$
 
@@ -199,14 +199,14 @@ Some window functions:
 # 5. Discrete Fourier Transform
 
 $$ \begin{align} 
-F_k &= \frac{1}{N} \sum_{j=0}^{N-1} f(j e^{-i2\pi\frac{jk}{N}}) \\
-f_j &= \sum_{k=0}{N-1} F_k e^{i2\pi\frac{jk}{N}}
+F_k &= \frac{1}{N} \sum_{j=0}^{N-1} f_j e^{-i2\pi\frac{jk}{N}} \\
+f_j &= \sum_{k=0}^{N-1} F_k e^{i2\pi\frac{jk}{N}}
 \end{align} $$
 
 $F_k$ are a spectrum, not a spectral density.
 
 The kernel $W_k^{-jk} = e^{-2\pi\frac{jk}{N}}$ of the DFT is discrete and periodic in $N$.
-This means the kernel has only $N$ values and each value is required $2N$ time in the sum.
+This means the kernel has only $N$ values and each value is required $2N$ times in the sum.
 In an inverse DFT, the kernel value are required in counter-clockwise order.
 
 ### Nyquist Frequency
@@ -329,7 +329,7 @@ $$
 Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes for $t \rightarrow + \infty$ (anti-causal part)
 - Depending on the signal, the system can still be unstable in the causal part if $f(t)$ increases faster than the damping
 
-**Inverse Laplace transform**
+### Inverse Laplace transform
 
 ```math
  f_\sigma(t) = \frac{1}{2 \pi i} \int_{\sigma + i\omega}^{\sigma - i\omega} F(s) e^{st} ds
@@ -337,7 +337,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 
 - The inverse Laplace transform is not unique. Different $\sigma$ may result in different signals.
 
-**General transfer function**
+### General transfer function
 
 ```math
   F(s) = \frac{b_L \prod_{l=1}^L (s-z_l)}{a_M \prod_{m=1}{M} (s-p_m)}
@@ -346,7 +346,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 - Each pole reduces the amplitude $\propto \omega^{-1}$, each zero amplifies it $\propto \omega^{-1}$
 - Each pole shifts the phase -90deg, each zero +90deg
 
-*Single Pole**
+### Single Pole
 
 $$
 \begin{align}
@@ -358,7 +358,7 @@ $$
 - The denominator can be interpreted as a vector pointing to the imaginary axis
 - $\omega >> \omega_c$: the amplitude decays $A \propto \omega^{-1}$, the phase converges towards -90 deg
 
-**Single Zero**
+### Single Zero
 
 $$
 \begin{align}
