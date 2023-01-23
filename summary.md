@@ -37,14 +37,14 @@ $$ \begin{align}
 - Fourier synthesis: computing $f(t)$ from $A_k$ and $B_k$
 - When all $k$ are accounted for, analysis followed by synthesis is a no-op
 - A time shifted signal has different phase but same amplitude spectrum
-- Kinks in the function require many $k$s for a good fit
-- Steps require even more $k$s and lead to the Gibbs phenomenon:
+- Kinks in the function require many $k$ s for a good fit
+- Discontinous steps require even more $k$ s and lead to the Gibbs phenomenon:
 There persists an overshoot, but the overshoot duration decreases.
 
 Conversion between coefficiants:
 
 $$ \begin{align}
-  a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0*} \\
+  a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0^*} \\
   a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
   \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im \{ F_k \} }{Re \{ F_k \} }
 \end{align} $$ 
@@ -53,13 +53,13 @@ $$ \begin{align}
 
 $f(t)$ is real-valued:
 
-- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and real ($B_k = 0$)
-- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and imaginary ($A_k = 0$)
+- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and real ( $B_k = 0$ )
+- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and imaginary ( $A_k = 0$ )
 
 $f(t)$ is purely imaginary:
 
-- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and imaginary ($A_k = 0$)
-- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and real ($B_k = 0$)
+- If $f(t)$ is even $\Rightarrow$ $F_k$ is even and and imaginary ( $A_k = 0$ )
+- If $f(t)$ is odd $\Rightarrow$ $F_k$ is odd and and real ( $B_k = 0$ )
 
 # 3. Fourier Transform
 
