@@ -181,7 +181,7 @@ The more localized a signal in the time domain, the more broader in the frequenc
 
 In practice, signal analysis is always performed over limited time.
 This can be modeled as a window function sliding across the signal.
-Mathematically, the window function is multiplied with the signal, which mean a convolution in the frequency domain.
+Mathematically, the window function is multiplied with the signal, which means a convolution in the frequency domain.
 
 The shape of the window function determines the frequency domain resolution.
 They are characterized by:
@@ -212,7 +212,7 @@ In an inverse DFT, the kernel value are required in counter-clockwise order.
 ### Nyquist Frequency
 
 Since $n = jk$, the time and frequency domain indices are indistinguishable, which means the frequency series is also periodic in $N$.
-Therefore, the upper half of the frequency series ($N/2..N-1$) contains no new information and is complex conjugate of the lower half.
+Therefore, the upper half of the frequency series ( $N/2..N-1$ ) contains no new information and is complex conjugate of the lower half.
 The threshold is called the **Nyquist Frequency**.
 
 $$ \begin{equation}
@@ -225,7 +225,7 @@ An odd signal at Nyquist cannot be respresented.
 ### Aliasing
 
 When the sample rate is below the Nyquist frequency, the orignal signal appears at a different frequency (their **alias**).
-To avoid aliasing artifacts in signals, an analogue low-pass filter can be applied to remove frequencies above Nyquist.
+To avoid aliasing artifacts from higher frequencies, an analogue low-pass filter can be applied to remove frequencies above Nyquist.
 
 It is possible to reconstruct the original continuous signal if the sampling was done correctly (unaliased) with sinc-interpolation.
 
