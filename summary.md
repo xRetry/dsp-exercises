@@ -44,8 +44,8 @@ There persists an overshoot, but the overshoot duration decreases.
 Conversion between coefficiants:
 
 $$ \begin{align}
-  a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0^*} \\
-  a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^*} \\
+  a_0 &= \sqrt{A_0^2} = \sqrt{F_0 F_0^\star} \\
+  a_k &= \sqrt{A_k^2 + B_k^2} = 2 \sqrt{F_k F_k^\star} \\
   \phi_k &= \text{atan}\frac{B_k}{A_k} = - \text{atan}\frac{Im \{ F_k \} }{Re \{ F_k \} }
 \end{align} $$ 
 
@@ -63,7 +63,7 @@ $f(t)$ is purely imaginary:
 
 # 3. Fourier Transform
 
-- Results from the Fourier Series, if the considered time interval goes to infinity ($T_0 \rightarrow \infty$).
+- Results from the Fourier Series, if the considered time interval goes to infinity ( $T_0 \rightarrow \infty$ ).
 - Applies to **non-periodic** functions
 
 $$ \begin{align}
@@ -110,13 +110,13 @@ $$ \begin{equation}
 
 - $|f(t)|^2$ is the instantaneous power
 - $|F(\omega)|^2$ is the Energy Spectral Denstiy (ESD)
-- $|F_k|^2 would be called the Power Spectral Density (PSD)
+- $|F_k|^2$ would be called the Power Spectral Density (PSD)
 
 $\Rightarrow$ The total energy of the signal is equal in the time and frequency domain (up to a constant).
 
 ### Dirac delta function
 
-The Dirac delta function ($\Delta (t)$) can be used to pick a value at a specific time in an integral.
+The Dirac delta function ( $\Delta (t)$ ) can be used to pick a value at a specific time in an integral.
 In the frequency domain, the $\delta$-function becomes 1 (same across all frequencies).
 
 $$ \begin{align}
