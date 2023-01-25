@@ -269,7 +269,7 @@ Practially it can be done using a step function, which is the differentiated.
 For a discrete aperiodic signal, the convolution becomes $y_i = \sum_{l=-\infty}^\infty h_l x_{i-l}$
 If the filter only has a finite length of no-zero $h$ elements, we can write $y_i = \sum_{l=-L}^L h_l x_{i-l}$
 
-### Inifinite Impulse Response (IIR)
+### Infinite Impulse Response (IIR)
 The filter is no only a linear combination of the input but also the output.
 
 $$ \begin{align}
@@ -282,7 +282,7 @@ It feeds a past (or future) filter result back into the filter.
 Therefore, it a memory, reaching back to infinity.
 It needs to be expressed through recursion.
 For certain $\omega_r$, it could happen that $A(\omega_r)=0$ and $X(\omega_r) \neq 0$, which leads to an unbounded output.
-This means $A(\omega)$ needs to be chosed with caution.
+This means $A(\omega)$ needs to be chosen with caution.
 
 Advantage:
 
@@ -296,7 +296,7 @@ Disadvantage:
 ### Analogue filters
 
 - For analogue filters, time domain convolution is impractical (can't store history)
-- Instead, use derivatives to memorize the past (Taulor's theorem)
+- Instead, use derivatives to memorize the past (Taylor's theorem)
 
 For analogue FIR filters:
 
@@ -310,7 +310,7 @@ $$ \begin{equation}
   H(\omega) = \frac{B(\omega)}{A(\omega)} = \frac{\sum_{l=-L}^L b_l (i\omega)^l}{\sum_{m=-M}^M a_m (i\omega)^m}
 \end{equation} $$
 
-*Butterworth filter**: maximally steep slopes and maximally flat transfer in the passband.
+**Butterworth filter**: maximally steep slopes and maximally flat transfer in the passband.
 
 # 8. Laplace Transform
 
