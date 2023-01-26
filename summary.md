@@ -188,7 +188,7 @@ They are characterized by:
 
 - Energy in the central peak compared to the total energy $\rightarrow$ The energy in the sidelobes will produce spectral artifacts
 - The height of the first sidelobe compared to the central peak $\rightarrow$ The sidelobes may mask small spectral amplitudes near larger ones
-- The half width (width at half amplitude) of the central peak $\rightarrow$ A broad peak will nearby frequencies
+- The half width (width at half amplitude) of the central peak $\rightarrow$ A broad peak will hide nearby frequencies
 
 Some window functions:
 
@@ -270,7 +270,7 @@ For a discrete aperiodic signal, the convolution becomes $y_i = \sum_{l=-\infty}
 If the filter only has a finite length of no-zero $h$ elements, we can write $y_i = \sum_{l=-L}^L h_l x_{i-l}$
 
 ### Infinite Impulse Response (IIR)
-The filter is no only a linear combination of the input but also the output.
+The filter is not only a linear combination of the input but also the output.
 
 $$ \begin{align}
   y_i &= \frac{1}{a_0} \left( \sum_{l=-L}^{L} b_l x_{i-l} - \sum_{m=-M; m\neq0}^{M} a_m y_{i-m} \right) \\
@@ -324,8 +324,8 @@ $$
 \end{align}
 $$
 
--$\sigma = 0$: the Laplace transform becomes a Fourier transform
-- $\sigma > 0$: represents a damped signal.
+- $\sigma = 0 \rightarrow$ the Laplace transform becomes a Fourier transform
+- $\sigma > 0 \rightarrow$ represents a damped signal.
 Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes for $t \rightarrow + \infty$ (anti-causal part)
 - Depending on the signal, the system can still be unstable in the causal part if $f(t)$ increases faster than the damping
 
@@ -351,7 +351,7 @@ Stabilizes the system for $t \rightarrow +\infty$ (causal part), destabilizes fo
 $$
 \begin{align}
   F(s) &= \frac{1}{s-p}\\
-  F(\omega) &= {1}{i\omega-p} = \frac{1}{r e^{i\phi}} = \frac{1}{r} e^{-i\phi}
+  F(\omega) &= \frac{1}{i\omega-p} = \frac{1}{r e^{i\phi}} = \frac{1}{r} e^{-i\phi}
 \end{align}
 $$
 
@@ -365,19 +365,18 @@ $$
   F(s) &= s-z\\
   F(\omega) &= r e^{i\phi}
 \end{align}
-$
+$$
 
-- $\omega >> \omega_c$: the amplitude decays $A \propto \omega^{-1}$, the phase converges towards -90 deg
+- $\omega >> \omega_c$: the amplitude amplifies $A \propto \omega^{-1}$, the phase converges towards +90 deg
 
 A stable, causal signal is:
 
 - minimum phase, if all zeros are on the left s-plane
 - maximum phase, if all zeros are on the right s-plane
 - mixed phase, otherwise
-Poles can be placed off the real axis:
-
+poles can be placed off the real axis
 - The closer to the imaginary axis, the larger the amplification
 - A pole right on the imaginary axis creates a singularity at $\omega_c$.
 The signal is unstable because the imaginary axis is not part of the ROC.
-- For a signal to be real-valued, poles must lie on the real axis, or appear in complex conjugate pairs.
+- For a signal to be real-valued, poles must lie on the real axis, or appear in complex conjugate pairs
 
